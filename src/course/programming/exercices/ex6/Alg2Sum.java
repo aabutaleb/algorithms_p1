@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -24,9 +24,10 @@ public class Alg2Sum {
 		int count = 0;
 		for (int t = 2500; t <= 4000; t++){
 			System.out.println("Buscando t = "+t);
-			Set<Entry<String, Integer>> set = new HashSet<Map.Entry<String,Integer>>(m.entrySet());
+			Set<Entry<String, Integer>> set = m.entrySet();
 			int y = -1;
-			for (int x = 0; x < set.size() && y < 0; x++){
+			for (Iterator<Entry<String, Integer>> i = set.iterator(); i.hasNext() && y < 0;){
+				int x = i.next().getValue();
 				Integer aux;
 				if ((aux = m.get(String.valueOf(t-x))) != null && aux.intValue() != x){
 					y = m.get(String.valueOf(t-x));
